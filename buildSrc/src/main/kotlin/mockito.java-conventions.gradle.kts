@@ -4,7 +4,7 @@ import org.gradle.api.plugins.JavaPluginExtension
 // only apply to Java projects
 // i.e., do nothing when applied to Android projects
 plugins.withType(JavaPlugin::class) {
-    val javaReleaseVersion = 11
+    val javaReleaseVersion = 17
 
     configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.toVersion(javaReleaseVersion)
@@ -31,4 +31,3 @@ plugins.withType(JavaPlugin::class) {
         }
     }
 }
-

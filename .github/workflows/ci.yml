@@ -28,7 +28,7 @@ jobs:
     # Definition of the build matrix
     strategy:
       matrix:
-        java: [11, 17, 21]
+        java: [17, 21]
         entry:
           - { mock-maker: 'mock-maker-default', member-accessor: 'member-accessor-default' }
           - { mock-maker: 'mock-maker-inline', member-accessor: 'member-accessor-module' }
@@ -53,15 +53,15 @@ jobs:
         cache: 'gradle'
 
     - name: 3. Validate Gradle wrapper
-      if: matrix.java == 11 && matrix.entry.mock-maker == 'mock-maker-default' # SINGLE-MATRIX-JOB
+      if: matrix.java == 17 && matrix.entry.mock-maker == 'mock-maker-default' # SINGLE-MATRIX-JOB
       uses: gradle/actions/wrapper-validation@v5 # https://github.com/gradle/wrapper-validation-action
 
     - name: 4. Build and check reproducibility of artifacts (single job only)
-      if: matrix.java == 11 && matrix.entry.mock-maker == 'mock-maker-default' # SINGLE-MATRIX-JOB
+      if: matrix.java == 17 && matrix.entry.mock-maker == 'mock-maker-default' # SINGLE-MATRIX-JOB
       run: ./check_reproducibility.sh
 
     - name: 5. Spotless check (single job only). Run './gradlew spotlessApply' locally if this job fails.
-      if: matrix.java == 11 && matrix.entry.mock-maker == 'mock-maker-default' # SINGLE-MATRIX-JOB
+      if: matrix.java == 17 && matrix.entry.mock-maker == 'mock-maker-default' # SINGLE-MATRIX-JOB
       run: >
         ./gradlew
         spotlessCheck

@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 import org.mockito.exceptions.base.MockitoException;
 
-public class DeepStubReturnsEnumJava21Test {
+public class DeepStubReturnsEnumTest {
 
     @Test
     public void cant_mock_enum_class_in_Java21_Issue_2984() {
